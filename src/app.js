@@ -1,5 +1,7 @@
 const express = require("express")
 const app = express();
+'module.exports = app;'
+const dotenv = require("dotenv").config();
 
 require("./db/conn")
 const  bcryptjs = require("bcryptjs");
@@ -93,7 +95,8 @@ if(useremail.Password === passwords ){
 
 })
 
+const ports = process.env.PORT || 3000
 
-app.listen( process.env.PORT || 3000, ()=>{
+app.listen( ports ,()=>{
     console.log("The server is running on port 3000")
 })
