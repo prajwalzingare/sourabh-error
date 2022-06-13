@@ -51,9 +51,8 @@ if(password === Cpassw){
     })
 
     const regi = await nextprocess.save();
-    res.status(201).render("index");
-    // console.log(regi)
-    res.send(regi)
+    res.status(201).send(regi);
+  
 
 
 }else{
