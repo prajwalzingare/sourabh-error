@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express();
-const port = process.env.PORT || 3000;
+
 require("./db/conn")
 const  bcryptjs = require("bcryptjs");
 
@@ -52,6 +52,8 @@ if(password === Cpassw){
 
     const regi = await nextprocess.save();
     res.status(201).render("index");
+    // console.log(regi)
+    res.send(regi)
 
 
 }else{
@@ -95,6 +97,6 @@ console.log(useremail)
 })
 
 
-app.listen(port, ()=>{
+app.listen( process.env.PORT || 3000, ()=>{
     console.log("The server is running on port 3000")
 })
