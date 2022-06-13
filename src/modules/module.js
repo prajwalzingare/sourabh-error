@@ -32,18 +32,21 @@ Gmails:{
  }
 });
 
-MongooseSchema.pre("save", async function(next){
-    if(this.isModified("Password")){
-        this.Password = await bcryptjs.hash(this.Password, 10);
-        console.log(`The current password is ${this.Password}`)
 
-        this.Cpassword = undefined;
-    }
-    next();
-})
 
 
 
 const Registri = new mongoose.model("Registri",MongooseSchema)
 
 module.exports = Registri;
+
+
+// MongooseSchema.pre("save", async function(next){
+//     if(this.isModified("Password")){
+//         this.Password = await bcryptjs.hash(this.Password, 10);
+//         console.log(`The current password is ${this.Password}`)
+
+//         this.Cpassword = undefined;
+//     }
+//     next();
+// })

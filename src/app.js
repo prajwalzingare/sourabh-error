@@ -51,8 +51,8 @@ if(password === Cpassw){
     })
 
     const regi = await nextprocess.save();
-    res.status(201).send(regi);
-  
+    res.status(201).render("index");
+    
 
 
 }else{
@@ -77,17 +77,15 @@ const passwords = req.body.passwordd;
 // console.log(`${email} and password is ${passwords}`)
 const useremail = await Registri.findOne({Gmails:email});
 
-const isMatch = await bcryptjs.compare(passwords, useremail.Password)
+// const isMatch = await bcryptjs.compare(passwords, useremail.Password)
 
 
-if(isMatch){
+if(useremail.Password === passwords ){
     res.status(201).render("index")
 }else{
     res.send("invalid login Details")
 }
-// res.send(useremail.Password);
 
-console.log(useremail)
 }
  catch(error){
         res.status(400).send("invalid Email")
