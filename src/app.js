@@ -2,8 +2,9 @@
 "use strict"
 const express = require("express");
 const app = express();
-("module.exports = app;");
+
 const dotenv = require("dotenv").config();
+const bodyParser = require("body-parser")
 
 require("./db/conn");
 const bcryptjs = require("bcryptjs");
@@ -12,6 +13,7 @@ const Registri = require("./modules/module");
 
 const path = require("path");
 const hbs = require("hbs");
+const bodyParser = require("body-parser");
 
 
 const public_path = path.join(__dirname, "../public");
@@ -22,7 +24,7 @@ const hbs_path = path.join(__dirname, "../templets/partials");
 // befoure send data with the help of post
 // You must tell your browser this Two methods
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 //
 
 app.set("view engine", "hbs");
@@ -87,8 +89,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
-const ports = process.env.PORT || 3000;
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
 
-app.listen(ports, () => {
-  console.log("The server is running on port 3000");
+
+app.listen(port, () => {
+  console.log("The server is running on port 8000");
 });
