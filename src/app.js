@@ -4,16 +4,16 @@ const express = require("express");
 const app = express();
 
 const dotenv = require("dotenv").config();
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 
 require("./db/conn");
-const bcryptjs = require("bcryptjs");
+// const bcryptjs = require("bcryptjs");
 
 const Registri = require("./modules/module");
 
 const path = require("path");
 const hbs = require("hbs");
-const bodyParser = require("body-parser");
+
 
 
 const public_path = path.join(__dirname, "../public");
